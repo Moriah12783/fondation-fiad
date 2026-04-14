@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "foundation": "The Foundation",
+    "vision": "Vision & Mission",
+    "history": "Our History",
+    "governance": "Governance",
+    "team": "Our Team",
+    "actions": "Our Actions",
+    "projects": "Projects",
+    "impact": "Impact",
+    "publications": "Publications",
+    "partners": "Partners",
+    "getInvolved": "Get Involved",
+    "media": "Media",
+    "contact": "Contact",
+    "donate": "Donate",
+    "language": "FR"
+  },
+  "hero": {
+    "tagline": "Fondation Impact Afrique Durable",
+    "title": "Building tomorrow's",
+    "titleAccent": "Africa today",
+    "description": "FIAD is an African foundation committed to sustainable development, social innovation and economic inclusion. We act for a strong, just and prosperous continent.",
+    "ctaPrimary": "Discover our mission",
+    "ctaSecondary": "Our projects",
+    "scrollDown": "Discover"
+  },
+  "stats": {
+    "title": "Our impact in numbers",
+    "subtitle": "Concrete, measurable and sustainable results across the African continent",
+    "beneficiaries": "Beneficiaries",
+    "countries": "African countries",
+    "projects": "Active projects",
+    "partners": "Partners"
+  },
+  "mission": {
+    "tag": "Our purpose",
+    "title": "A vision for Africa",
+    "description": "The Fondation Impact Afrique Durable works for a sovereign, inclusive and sustainable African development. We believe that African solutions, carried by Africans, can sustainably transform the continent.",
+    "axes": "Our strategic pillars",
+    "learnMore": "Learn more about our mission"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Concrete initiatives deployed on the ground to transform communities",
+    "tag": "Our achievements",
+    "viewAll": "View all projects",
+    "learnMore": "Learn more",
+    "noProjects": "No projects at this time",
+    "category": {
+      "education": "Education",
+      "environment": "Environment",
+      "entrepreneurship": "Entrepreneurship",
+      "health": "Health",
+      "governance": "Governance"
+    }
+  },
+  "partners": {
+    "tag": "They trust us",
+    "title": "Our strategic partners",
+    "subtitle": "International institutions, multilateral organizations and private partners supporting our mission",
+    "becomePartner": "Become a partner"
+  },
+  "cta": {
+    "title": "Join the movement for Africa",
+    "description": "Together, we can accelerate the transformation of the continent. Partners, donors, volunteers: your commitment matters.",
+    "primary": "Get involved",
+    "secondary": "Contact us"
+  },
+  "footer": {
+    "description": "The Fondation Impact Afrique Durable is a non-profit organization dedicated to sustainable development and social innovation in Africa.",
+    "quickLinks": "Quick links",
+    "contact": "Contact",
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "rights": "All rights reserved",
+    "newsletter": {
+      "title": "Stay informed",
+      "placeholder": "Your email address",
+      "subscribe": "Subscribe"
+    }
+  },
+  "foundation": {
+    "title": "The Foundation",
+    "subtitle": "Our vision, our mission, our values",
+    "vision": {
+      "title": "Our Vision",
+      "content": "An African continent where every individual, regardless of origin, has the resources, opportunities and framework needed to fully contribute to sustainable and equitable development."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "Design, finance and deploy high-impact programs in education, entrepreneurship, sustainable development and social innovation, in partnership with local communities, institutions and the private sector."
+    },
+    "values": {
+      "title": "Our Values",
+      "integrity": "Integrity",
+      "integrityDesc": "Transparency and honesty in all our actions",
+      "excellence": "Excellence",
+      "excellenceDesc": "Quality standards in every program",
+      "impact": "Impact",
+      "impactDesc": "Rigorous measurement of our results",
+      "inclusion": "Inclusion",
+      "inclusionDesc": "No community left behind",
+      "sovereignty": "Sovereignty",
+      "sovereigntyDesc": "African solutions for Africa",
+      "partnership": "Partnership",
+      "partnershipDesc": "Collaboration with all stakeholders"
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "A question, a project, a partnership proposal? Our team will get back to you.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "organization": "Organization (optional)",
+      "subject": "Subject",
+      "message": "Your message",
+      "send": "Send message",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully!",
+      "error": "An error occurred. Please try again."
+    },
+    "info": {
+      "address": "Address",
+      "addressValue": "Abidjan, Côte d'Ivoire",
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Office hours",
+      "hoursValue": "Mon - Fri: 8:00 AM - 5:00 PM"
+    }
+  },
+  "impact": {
+    "title": "Our Impact",
+    "subtitle": "Transparent data to measure our contribution to Africa's development",
+    "download": "Download impact report"
+  },
+  "publications": {
+    "title": "Publications",
+    "subtitle": "Activity reports, studies, position papers and documentary resources",
+    "download": "Download",
+    "readMore": "Read more"
+  }
+}

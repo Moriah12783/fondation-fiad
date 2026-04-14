@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "foundation": "La Fondation",
+    "vision": "Vision & Mission",
+    "history": "Notre Histoire",
+    "governance": "Gouvernance",
+    "team": "Notre Équipe",
+    "actions": "Nos Actions",
+    "projects": "Projets",
+    "impact": "Impact",
+    "publications": "Publications",
+    "partners": "Partenaires",
+    "getInvolved": "S'impliquer",
+    "media": "Médias",
+    "contact": "Contact",
+    "donate": "Faire un don",
+    "language": "EN"
+  },
+  "hero": {
+    "tagline": "Fondation Impact Afrique Durable",
+    "title": "Bâtir aujourd'hui",
+    "titleAccent": "l'Afrique de demain",
+    "description": "La FIAD est une fondation africaine engagée dans le développement durable, l'innovation sociale et l'inclusion économique. Nous agissons pour un continent fort, juste et prospère.",
+    "ctaPrimary": "Découvrir notre mission",
+    "ctaSecondary": "Nos projets",
+    "scrollDown": "Découvrir"
+  },
+  "stats": {
+    "title": "Notre impact en chiffres",
+    "subtitle": "Des résultats concrets, mesurables et durables à travers le continent africain",
+    "beneficiaries": "Bénéficiaires",
+    "countries": "Pays africains",
+    "projects": "Projets actifs",
+    "partners": "Partenaires"
+  },
+  "mission": {
+    "tag": "Notre raison d'être",
+    "title": "Une vision pour l'Afrique",
+    "description": "La Fondation Impact Afrique Durable œuvre pour un développement africain souverain, inclusif et durable. Nous croyons que les solutions africaines, portées par des Africains, peuvent transformer durablement le continent.",
+    "axes": "Nos axes stratégiques",
+    "learnMore": "En savoir plus sur notre mission"
+  },
+  "projects": {
+    "tag": "Nos réalisations",
+    "title": "Projets phares",
+    "subtitle": "Des initiatives à fort impact, déployées sur le terrain pour des communautés concrètes",
+    "viewAll": "Voir tous les projets",
+    "learnMore": "En savoir plus",
+    "category": {
+      "education": "Éducation",
+      "environment": "Environnement",
+      "entrepreneurship": "Entrepreneuriat",
+      "health": "Santé",
+      "governance": "Gouvernance"
+    }
+  },
+  "partners": {
+    "tag": "Ils nous font confiance",
+    "title": "Nos partenaires stratégiques",
+    "subtitle": "Institutions internationales, organisations multilatérales et partenaires privés qui soutiennent notre mission",
+    "becomePartner": "Devenir partenaire"
+  },
+  "cta": {
+    "title": "Rejoignez le mouvement pour l'Afrique",
+    "description": "Ensemble, nous pouvons accélérer la transformation du continent. Partenaires, bailleurs, volontaires : votre engagement compte.",
+    "primary": "S'impliquer",
+    "secondary": "Nous contacter"
+  },
+  "footer": {
+    "description": "La Fondation Impact Afrique Durable est une organisation à but non lucratif dédiée au développement durable et à l'innovation sociale en Afrique.",
+    "quickLinks": "Liens rapides",
+    "contact": "Contact",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "rights": "Tous droits réservés",
+    "newsletter": {
+      "title": "Restez informé",
+      "placeholder": "Votre adresse email",
+      "subscribe": "S'abonner"
+    }
+  },
+  "foundation": {
+    "title": "La Fondation",
+    "subtitle": "Notre vision, notre mission, nos valeurs",
+    "vision": {
+      "title": "Notre Vision",
+      "content": "Un continent africain où chaque individu, quelle que soit son origine, dispose des ressources, des opportunités et du cadre nécessaires pour contribuer pleinement à un développement durable et équitable."
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "content": "Concevoir, financer et déployer des programmes à fort impact dans les domaines de l'éducation, de l'entrepreneuriat, du développement durable et de l'innovation sociale, en partenariat avec les communautés locales, les institutions et le secteur privé."
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "integrity": "Intégrité",
+      "integrityDesc": "Transparence et honnêteté dans toutes nos actions",
+      "excellence": "Excellence",
+      "excellenceDesc": "Exigence de qualité dans chaque programme",
+      "impact": "Impact",
+      "impactDesc": "Mesure rigoureuse de nos résultats",
+      "inclusion": "Inclusion",
+      "inclusionDesc": "Aucune communauté laissée de côté",
+      "sovereignty": "Souveraineté",
+      "sovereigntyDesc": "Solutions africaines pour l'Afrique",
+      "partnership": "Partenariat",
+      "partnershipDesc": "Collaboration avec toutes les parties prenantes"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Une question, un projet, une proposition de partenariat ? Notre équipe vous répond.",
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "organization": "Organisation (optionnel)",
+      "subject": "Sujet",
+      "message": "Votre message",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Votre message a été envoyé avec succès !",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "info": {
+      "address": "Adresse",
+      "addressValue": "Abidjan, Côte d'Ivoire",
+      "email": "Email",
+      "phone": "Téléphone",
+      "hours": "Horaires",
+      "hoursValue": "Lun - Ven : 8h00 - 17h00"
+    }
+  },
+  "impact": {
+    "title": "Notre Impact",
+    "subtitle": "Des données transparentes pour mesurer notre contribution au développement de l'Afrique",
+    "download": "Télécharger le rapport d'impact"
+  },
+  "publications": {
+    "title": "Publications",
+    "subtitle": "Rapports d'activité, études, documents de position et ressources documentaires",
+    "download": "Télécharger",
+    "readMore": "Lire la suite"
+  },
+  "projects": {
+    "title": "Nos Projets",
+    "subtitle": "Des initiatives concrètes déployées sur le terrain pour transformer les communautés",
+    "tag": "Nos réalisations",
+    "viewAll": "Voir tous les projets",
+    "learnMore": "En savoir plus",
+    "noProjects": "Aucun projet pour le moment"
+  }
+}
