@@ -17,6 +17,8 @@ export const routing = defineRouting({
     "/partenaires": { fr: "/partenaires", en: "/partners" },
     "/impliquer": { fr: "/impliquer", en: "/get-involved" },
     "/medias": { fr: "/medias", en: "/media" },
+    "/bailleurs": { fr: "/bailleurs", en: "/donors" },
+    "/transparence": { fr: "/transparence", en: "/transparency" },
     "/contact": "/contact",
     "/legal/mentions-legales": { fr: "/legal/mentions-legales", en: "/legal/legal-notice" },
     "/legal/politique-confidentialite": {

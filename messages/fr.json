@@ -147,5 +147,13 @@
     "viewAll": "Voir tous les projets",
     "learnMore": "En savoir plus",
     "noProjects": "Aucun projet pour le moment"
+  },
+  "bailleurs": {
+    "title": "Pour les Bailleurs",
+    "nav": "Pour les Bailleurs"
+  },
+  "transparence": {
+    "title": "Transparence",
+    "nav": "Transparence"
   }
 }

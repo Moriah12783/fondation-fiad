@@ -1,98 +1,237 @@
 import type { Metadata } from "next";
-import { TrendingUp, Users, Globe, Leaf } from "lucide-react";
+import { Download, Users, Briefcase, Globe, Heart, CheckCircle } from "lucide-react";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: locale === "fr" ? "Notre Impact" : "Our Impact",
+    title: locale === "fr" ? "Notre Impact | FIAD" : "Our Impact | FIAD",
+    description: locale === "fr"
+      ? "Découvrez l'impact mesurable de la Fondation Impact Afrique Durable — bénéficiaires, projets, zones d'intervention et alignement ODD."
+      : "Discover the measurable impact of Fondation Impact Afrique Durable — beneficiaries, projects, zones and SDG alignment.",
   };
 }
+
+const THEMATIC_AXES = [
+  { label: "Éducation & Numérique", labelEn: "Education & Digital", percent: 35, color: "#1b6b3a" },
+  { label: "Entrepreneuriat & Emploi", labelEn: "Entrepreneurship & Employment", percent: 28, color: "#c9973a" },
+  { label: "Environnement & Climat", labelEn: "Environment & Climate", percent: 22, color: "#0f2a4a" },
+  { label: "Inclusion Économique", labelEn: "Economic Inclusion", percent: 15, color: "#6b7280" },
+];
+
+const SDGS = [
+  { number: 1, label: "Pas de pauvreté", labelEn: "No poverty", color: "#E5243B" },
+  { number: 4, label: "Éducation de qualité", labelEn: "Quality education", color: "#C5192D" },
+  { number: 5, label: "Égalité des sexes", labelEn: "Gender equality", color: "#FF3A21" },
+  { number: 8, label: "Travail décent", labelEn: "Decent work", color: "#A21942" },
+  { number: 10, label: "Inégalités réduites", labelEn: "Reduced inequalities", color: "#DD1367" },
+  { number: 13, label: "Mesures climatiques", labelEn: "Climate action", color: "#3F7E44" },
+  { number: 15, label: "Vie terrestre", labelEn: "Life on land", color: "#56C02B" },
+];
 
 export default async function ImpactPage({ params }: Props) {
   const { locale } = await params;
   const isFr = locale === "fr";
 
-  const kpis = [
-    { icon: Users, value: "50 000+", label: isFr ? "Bénéficiaires directs" : "Direct beneficiaries", color: "bg-fiad-green/10 text-fiad-green" },
-    { icon: Globe, value: "12", label: isFr ? "Pays d'intervention" : "Countries of operation", color: "bg-blue-100 text-blue-600" },
-    { icon: TrendingUp, value: "35+", label: isFr ? "Projets actifs" : "Active projects", color: "bg-amber-100 text-amber-600" },
-    { icon: Leaf, value: "1 200 ha", label: isFr ? "Terres restaurées" : "Land restored", color: "bg-teal-100 text-teal-600" },
-  ];
-
   return (
     <div className="pt-24">
-      <section className="bg-gradient-to-br from-fiad-navy to-fiad-navy-light py-20 px-4">
+      {/* Header */}
+      <section className="bg-[#0f2a4a] py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-display font-bold text-4xl sm:text-5xl text-white mb-4">
+          <span className="inline-block px-4 py-2 rounded-full bg-[#c9973a]/20 text-[#c9973a] text-sm font-medium mb-6 border border-[#c9973a]/30">
+            {isFr ? "Données vérifiables" : "Verifiable data"}
+          </span>
+          <h1 className="font-bold text-4xl sm:text-5xl text-white mb-4">
             {isFr ? "Notre Impact" : "Our Impact"}
           </h1>
-          <p className="text-white/70 text-xl">
+          <p className="text-white/70 text-xl max-w-2xl mx-auto">
             {isFr
-              ? "Données transparentes pour mesurer notre contribution au développement de l'Afrique"
-              : "Transparent data to measure our contribution to Africa's development"}
+              ? "Des données transparentes pour mesurer notre contribution au développement durable de l'Afrique"
+              : "Transparent data to measure our contribution to Africa's sustainable development"}
           </p>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* KPIs */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-            {kpis.map(({ icon: Icon, value, label, color }) => (
-              <div key={label} className="text-center p-6 rounded-2xl border border-gray-100 hover:shadow-md transition-all">
-                <div className={`w-14 h-14 rounded-2xl ${color} flex items-center justify-center mx-auto mb-4`}>
-                  <Icon className="w-7 h-7" />
+      {/* KPIs principaux */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Users,
+                value: "10 000+",
+                label: isFr ? "Bénéficiaires directs" : "Direct beneficiaries",
+                sub: isFr ? "et 35 000 indirects" : "and 35,000 indirect",
+                color: "green",
+              },
+              {
+                icon: Briefcase,
+                value: "15",
+                label: isFr ? "Projets déployés" : "Projects deployed",
+                sub: isFr ? "dans 5 pays" : "across 5 countries",
+                color: "gold",
+              },
+              {
+                icon: Globe,
+                value: "5",
+                label: isFr ? "Zones d'intervention" : "Intervention zones",
+                sub: isFr ? "Afrique de l'Ouest" : "West Africa",
+                color: "navy",
+              },
+              {
+                icon: Heart,
+                value: "20+",
+                label: isFr ? "Partenaires engagés" : "Engaged partners",
+                sub: isFr ? "dont 8 internationaux" : "8 international",
+                color: "green",
+              },
+            ].map((k, i) => (
+              <div key={i} className="text-center p-6 rounded-2xl border border-gray-100 hover:shadow-md transition-all">
+                <div className={`w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center ${
+                  k.color === "green" ? "bg-[#1b6b3a]/10" :
+                  k.color === "gold" ? "bg-[#c9973a]/10" :
+                  "bg-[#0f2a4a]/10"
+                }`}>
+                  <k.icon className={`w-7 h-7 ${
+                    k.color === "green" ? "text-[#1b6b3a]" :
+                    k.color === "gold" ? "text-[#c9973a]" :
+                    "text-[#0f2a4a]"
+                  }`} />
                 </div>
-                <div className="font-display font-bold text-3xl sm:text-4xl text-fiad-navy mb-2">{value}</div>
-                <div className="text-fiad-gray-light text-sm">{label}</div>
+                <div className="font-bold text-3xl sm:text-4xl text-[#0f2a4a] mb-1">{k.value}</div>
+                <div className="font-medium text-gray-700 text-sm mb-1">{k.label}</div>
+                <div className="text-gray-400 text-xs">{k.sub}</div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Zones géographiques */}
-          <h2 className="font-display font-bold text-3xl text-fiad-navy mb-8 text-center">
-            {isFr ? "Présence géographique" : "Geographic presence"}
-          </h2>
-          <div className="bg-fiad-cream rounded-2xl p-8 mb-16">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-              {[
-                { flag: "🇨🇮", name: "Côte d'Ivoire", projects: 8 },
-                { flag: "🇸🇳", name: "Sénégal", projects: 5 },
-                { flag: "🇬🇭", name: "Ghana", projects: 4 },
-                { flag: "🇧🇫", name: "Burkina Faso", projects: 4 },
-                { flag: "🇧🇯", name: "Bénin", projects: 3 },
-                { flag: "🇹🇬", name: "Togo", projects: 3 },
-                { flag: "🇬🇳", name: "Guinée", projects: 2 },
-                { flag: "🇲🇱", name: "Mali", projects: 2 },
-                { flag: "🇨🇲", name: "Cameroun", projects: 2 },
-                { flag: "🇰🇪", name: "Kenya", projects: 1 },
-                { flag: "🇹🇿", name: "Tanzanie", projects: 1 },
-                { flag: "🇷🇼", name: "Rwanda", projects: 1 },
-              ].map((c) => (
-                <div key={c.name} className="bg-white rounded-xl p-4 text-center hover:shadow-sm transition-all">
-                  <div className="text-3xl mb-2">{c.flag}</div>
-                  <div className="text-xs font-medium text-fiad-navy">{c.name}</div>
-                  <div className="text-xs text-fiad-gray-light mt-1">{c.projects} {isFr ? "projets" : "projects"}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Rapport d'impact */}
-          <div className="bg-fiad-navy rounded-2xl p-8 text-center">
-            <h3 className="font-display font-bold text-2xl text-white mb-3">
-              {isFr ? "Rapport d'Impact 2024" : "2024 Impact Report"}
-            </h3>
-            <p className="text-white/70 mb-6">
+      {/* Répartition thématique */}
+      <section className="py-20 bg-[#f8f5f0]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-[#1b6b3a] font-semibold text-sm uppercase tracking-wider">
+              {isFr ? "Analyse" : "Analysis"}
+            </span>
+            <h2 className="text-4xl font-bold text-[#0f2a4a] mt-2 mb-4">
+              {isFr ? "Répartition par axe thématique" : "Distribution by thematic axis"}
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
               {isFr
-                ? "Téléchargez notre rapport annuel détaillant tous nos programmes et résultats."
-                : "Download our annual report detailing all our programs and results."}
+                ? "Allocation de nos ressources et programmes par domaine d'intervention"
+                : "Allocation of our resources and programs by intervention area"}
             </p>
-            <button className="inline-flex items-center gap-2 px-6 py-3 bg-fiad-gold hover:bg-fiad-gold-dark text-white font-semibold rounded-xl transition-all">
-              {isFr ? "Télécharger le rapport (PDF)" : "Download report (PDF)"}
-            </button>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-5">
+            {THEMATIC_AXES.map((axis, i) => (
+              <div key={i}>
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="font-medium text-gray-700">{isFr ? axis.label : axis.labelEn}</span>
+                  <span className="font-bold" style={{ color: axis.color }}>{axis.percent}%</span>
+                </div>
+                <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${axis.percent}%`, backgroundColor: axis.color }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Alignement ODD */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-[#c9973a] font-semibold text-sm uppercase tracking-wider">
+              {isFr ? "Cadre international" : "International framework"}
+            </span>
+            <h2 className="text-4xl font-bold text-[#0f2a4a] mt-2 mb-4">
+              {isFr ? "Alignement sur les ODD" : "Alignment with SDGs"}
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              {isFr
+                ? "Nos programmes contribuent directement à 7 des 17 Objectifs de Développement Durable de l'ONU"
+                : "Our programs directly contribute to 7 of the 17 UN Sustainable Development Goals"}
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {SDGS.map((sdg) => (
+              <div
+                key={sdg.number}
+                className="flex flex-col items-center gap-2 group"
+              >
+                <div
+                  className="w-20 h-20 rounded-2xl flex flex-col items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform"
+                  style={{ backgroundColor: sdg.color }}
+                >
+                  <span className="text-xs font-medium opacity-80">{isFr ? "ODD" : "SDG"}</span>
+                  <span className="text-2xl font-bold">{sdg.number}</span>
+                </div>
+                <span className="text-xs text-gray-600 text-center max-w-[80px] leading-tight">
+                  {isFr ? sdg.label : sdg.labelEn}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Engagement de mesure */}
+      <section className="py-20 bg-[#0f2a4a] text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-[#c9973a] font-semibold text-sm uppercase tracking-wider">
+                {isFr ? "Notre méthode" : "Our method"}
+              </span>
+              <h2 className="text-4xl font-bold text-white mt-2 mb-6">
+                {isFr ? "Notre engagement de mesure" : "Our measurement commitment"}
+              </h2>
+              <p className="text-white/70 leading-relaxed mb-6">
+                {isFr
+                  ? "Chaque euro investi fait l'objet d'un suivi rigoureux. Nous mesurons nos résultats selon trois niveaux : réalisations immédiates, effets à moyen terme et transformations durables."
+                  : "Every euro invested is rigorously tracked. We measure our results at three levels: immediate outputs, medium-term outcomes and lasting transformations."}
+              </p>
+              <div className="space-y-3">
+                {(isFr ? [
+                  "Indicateurs SMART définis avant chaque programme",
+                  "Collecte de données trimestrielle sur le terrain",
+                  "Évaluations indépendantes mi-parcours et finales",
+                  "Publication intégrale des résultats — bons et moins bons",
+                  "Rapport d'impact annuel audité et public",
+                ] : [
+                  "SMART indicators defined before each program",
+                  "Quarterly data collection in the field",
+                  "Independent mid-term and final evaluations",
+                  "Full publication of results — good and less good",
+                  "Annual audited public impact report",
+                ]).map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-[#c9973a] flex-shrink-0 mt-0.5" />
+                    <span className="text-white/80 text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white/10 rounded-2xl p-8 text-center">
+              <h3 className="text-2xl font-bold text-white mb-3">
+                {isFr ? "Rapport d'Impact 2024" : "2024 Impact Report"}
+              </h3>
+              <p className="text-white/70 mb-6 text-sm leading-relaxed">
+                {isFr
+                  ? "Téléchargez notre rapport annuel complet détaillant l'ensemble de nos programmes, résultats et apprentissages."
+                  : "Download our complete annual report detailing all our programs, results and learnings."}
+              </p>
+              <button className="inline-flex items-center gap-2 px-6 py-3 bg-[#c9973a] hover:bg-[#a07820] text-white font-semibold rounded-xl transition-colors">
+                <Download className="w-5 h-5" />
+                {isFr ? "Télécharger le rapport d'impact" : "Download impact report"}
+              </button>
+            </div>
           </div>
         </div>
       </section>

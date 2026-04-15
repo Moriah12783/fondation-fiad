@@ -140,5 +140,13 @@
     "subtitle": "Activity reports, studies, position papers and documentary resources",
     "download": "Download",
     "readMore": "Read more"
+  },
+  "bailleurs": {
+    "title": "For Donors",
+    "nav": "For Donors"
+  },
+  "transparence": {
+    "title": "Transparency",
+    "nav": "Transparency"
   }
 }

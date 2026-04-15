@@ -85,11 +85,18 @@ export default function Navbar({ locale }: NavbarProps) {
                   className={cn(
                     "flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                     isScrolled || !isHome
-                      ? "text-fiad-gray hover:text-fiad-green hover:bg-fiad-cream"
+                      ? item.badge
+                        ? "text-[#c9973a] hover:text-[#a07820] hover:bg-fiad-cream"
+                        : "text-fiad-gray hover:text-fiad-green hover:bg-fiad-cream"
                       : "text-white/90 hover:text-white hover:bg-white/10"
                   )}
                 >
                   {locale === "fr" ? item.label : item.labelEn}
+                  {(item as { badge?: string }).badge && (
+                    <span className="ml-1 px-1.5 py-0.5 text-[10px] font-bold bg-[#c9973a] text-white rounded-full leading-none">
+                      {(item as { badge?: string }).badge}
+                    </span>
+                  )}
                   {item.children && <ChevronDown className="w-3 h-3" />}
                 </Link>
 

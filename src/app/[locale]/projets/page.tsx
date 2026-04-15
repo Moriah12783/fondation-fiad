@@ -1,177 +1,155 @@
-import type { Metadata } from "next";
-import { MapPin, Calendar, ArrowRight } from "lucide-react";
+"use client";
 
-type Props = { params: Promise<{ locale: string }> };
+import { useState } from "react";
+import { MapPin, ArrowRight, Users, Briefcase } from "lucide-react";
+import Link from "next/link";
+import { PROJECTS_DATA } from "@/lib/constants";
+import { useParams } from "next/navigation";
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  return {
-    title: locale === "fr" ? "Nos Projets" : "Our Projects",
-  };
-}
-
-const PROJECTS = [
-  {
-    slug: "agrofutur-cote-divoire",
-    title: "AgroFutur Côte d'Ivoire",
-    location: "Abidjan, Côte d'Ivoire",
-    category: "Développement durable",
-    categoryEn: "Sustainable Development",
-    description: "Programme d'agriculture durable pour 5 000 agriculteurs des régions rurales, intégrant techniques modernes et gestion durable des ressources.",
-    descriptionEn: "Sustainable agriculture program for 5,000 rural farmers, integrating modern techniques and sustainable resource management.",
-    year: "2024",
-    status: "active",
-    beneficiaries: "5 000",
-    color: "green",
-  },
-  {
-    slug: "educode-africa",
-    title: "EduCode Africa",
-    location: "Dakar, Sénégal",
-    category: "Éducation & Innovation",
-    categoryEn: "Education & Innovation",
-    description: "Formation au numérique et au codage pour 2 000 jeunes défavorisés, avec insertion professionnelle dans le secteur technologique.",
-    descriptionEn: "Digital and coding training for 2,000 disadvantaged youth, with professional integration in the technology sector.",
-    year: "2023",
-    status: "active",
-    beneficiaries: "2 000",
-    color: "blue",
-  },
-  {
-    slug: "femmes-entrepreneures",
-    title: "Femmes Entrepreneures",
-    location: "Accra, Ghana",
-    category: "Entrepreneuriat",
-    categoryEn: "Entrepreneurship",
-    description: "Accompagnement de 500 femmes entrepreneuses avec accès au financement, formation et réseau de mentorat professionnel.",
-    descriptionEn: "Support for 500 women entrepreneurs with access to financing, training and professional mentoring network.",
-    year: "2024",
-    status: "active",
-    beneficiaries: "500",
-    color: "gold",
-  },
-  {
-    slug: "eau-propre-sahel",
-    title: "Eau Propre Sahel",
-    location: "Ouagadougou, Burkina Faso",
-    category: "Environnement & Climat",
-    categoryEn: "Environment & Climate",
-    description: "Accès à l'eau potable pour 15 000 habitants de zones rurales semi-arides grâce à des technologies adaptées.",
-    descriptionEn: "Access to clean water for 15,000 inhabitants of semi-arid rural areas through adapted technologies.",
-    year: "2023",
-    status: "completed",
-    beneficiaries: "15 000",
-    color: "teal",
-  },
-  {
-    slug: "sante-communautaire",
-    title: "Santé Communautaire+",
-    location: "Cotonou, Bénin",
-    category: "Santé",
-    categoryEn: "Health",
-    description: "Déploiement de cliniques mobiles et formation d'agents de santé communautaires dans 50 villages.",
-    descriptionEn: "Deployment of mobile clinics and training of community health workers in 50 villages.",
-    year: "2024",
-    status: "active",
-    beneficiaries: "8 000",
-    color: "red",
-  },
-  {
-    slug: "gouvernance-locale",
-    title: "Gouvernance Locale Digitale",
-    location: "Lomé, Togo",
-    category: "Gouvernance",
-    categoryEn: "Governance",
-    description: "Numérisation des services publics locaux et formation des agents municipaux pour une meilleure efficacité administrative.",
-    descriptionEn: "Digitization of local public services and training of municipal officers for better administrative efficiency.",
-    year: "2025",
-    status: "active",
-    beneficiaries: "20 000",
-    color: "purple",
-  },
-];
-
-const COLOR_CLASSES: Record<string, string> = {
-  green: "bg-green-50 text-fiad-green border-green-200",
-  blue: "bg-blue-50 text-blue-600 border-blue-200",
-  gold: "bg-amber-50 text-amber-700 border-amber-200",
-  teal: "bg-teal-50 text-teal-600 border-teal-200",
-  red: "bg-rose-50 text-rose-600 border-rose-200",
-  purple: "bg-purple-50 text-purple-600 border-purple-200",
+const CATEGORY_LABELS: Record<string, { fr: string; en: string }> = {
+  education: { fr: "Éducation", en: "Education" },
+  entrepreneurship: { fr: "Entrepreneuriat", en: "Entrepreneurship" },
+  environment: { fr: "Environnement", en: "Environment" },
 };
 
-export default async function ProjectsPage({ params }: Props) {
-  const { locale } = await params;
+const FILTERS = [
+  { key: "all", fr: "Tous", en: "All" },
+  { key: "education", fr: "Éducation", en: "Education" },
+  { key: "entrepreneurship", fr: "Entrepreneuriat", en: "Entrepreneurship" },
+  { key: "environment", fr: "Environnement", en: "Environment" },
+];
+
+export default function ProjectsPage() {
+  const params = useParams();
+  const locale = (params?.locale as string) ?? "fr";
   const isFr = locale === "fr";
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filtered = activeFilter === "all"
+    ? PROJECTS_DATA
+    : PROJECTS_DATA.filter((p) => p.category === activeFilter);
 
   return (
     <div className="pt-24">
-      <section className="bg-gradient-to-br from-fiad-navy to-fiad-navy-light py-20 px-4">
+      {/* Header */}
+      <section className="bg-[#0f2a4a] py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-display font-bold text-4xl sm:text-5xl text-white mb-4">
+          <span className="inline-block px-4 py-2 rounded-full bg-[#c9973a]/20 text-[#c9973a] text-sm font-medium mb-6 border border-[#c9973a]/30">
+            {isFr ? "Nos réalisations" : "Our achievements"}
+          </span>
+          <h1 className="font-bold text-4xl sm:text-5xl text-white mb-4">
             {isFr ? "Nos Projets" : "Our Projects"}
           </h1>
-          <p className="text-white/70 text-xl">
+          <p className="text-white/70 text-xl max-w-2xl mx-auto">
             {isFr
-              ? "Des initiatives concrètes déployées sur le terrain à travers l'Afrique"
-              : "Concrete initiatives deployed across Africa"}
+              ? "Des initiatives à fort impact, déployées sur le terrain pour des communautés concrètes à travers l'Afrique"
+              : "High-impact initiatives deployed on the ground for concrete communities across Africa"}
           </p>
         </div>
       </section>
 
-      <section className="py-20 bg-fiad-cream">
+      {/* Filtres */}
+      <section className="bg-white border-b border-gray-100 sticky top-16 z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-wrap gap-2">
+            {FILTERS.map((f) => (
+              <button
+                key={f.key}
+                onClick={() => setActiveFilter(f.key)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeFilter === f.key
+                    ? "bg-[#1b6b3a] text-white shadow-sm"
+                    : "bg-[#f8f5f0] text-gray-600 hover:bg-[#1b6b3a]/10 hover:text-[#1b6b3a]"
+                }`}
+              >
+                {isFr ? f.fr : f.en}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Grille de projets */}
+      <section className="py-16 bg-[#f8f5f0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROJECTS.map((project) => {
-              const colorClass = COLOR_CLASSES[project.color];
-              return (
-                <article key={project.slug} className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-                  {/* Header */}
-                  <div className="bg-gradient-to-r from-fiad-green to-fiad-green-light h-2" />
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium border ${colorClass}`}>
-                        {isFr ? project.category : project.categoryEn}
-                      </span>
-                      <span className={`flex items-center gap-1 text-xs font-medium ${project.status === "active" ? "text-fiad-green" : "text-fiad-gray-light"}`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${project.status === "active" ? "bg-fiad-green animate-pulse" : "bg-gray-400"}`} />
-                        {project.status === "active" ? (isFr ? "En cours" : "Active") : (isFr ? "Terminé" : "Completed")}
-                      </span>
-                    </div>
+            {filtered.map((project) => (
+              <article key={project.slug} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+                <div className={`h-2 w-full ${
+                  project.color === "green" ? "bg-[#1b6b3a]" :
+                  project.color === "gold" ? "bg-[#c9973a]" :
+                  "bg-[#0f2a4a]"
+                }`} />
+                <div className="p-6">
+                  {/* Badges */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-gray-100 text-gray-600">
+                      {CATEGORY_LABELS[project.category]?.[isFr ? "fr" : "en"] ?? project.category}
+                    </span>
+                    <span className={`flex items-center gap-1 text-xs font-medium ${
+                      project.status === "active" ? "text-[#1b6b3a]" : "text-gray-400"
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${
+                        project.status === "active" ? "bg-[#1b6b3a] animate-pulse" : "bg-gray-400"
+                      }`} />
+                      {project.status === "active"
+                        ? (isFr ? "En cours" : "Active")
+                        : (isFr ? "Terminé" : "Completed")}
+                    </span>
+                  </div>
 
-                    <h3 className="font-display font-bold text-xl text-fiad-navy mb-3 group-hover:text-fiad-green transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-fiad-gray-light text-sm leading-relaxed mb-5">
-                      {isFr ? project.description : project.descriptionEn}
-                    </p>
+                  {/* Titre */}
+                  <h3 className="font-bold text-[#0f2a4a] text-lg mb-2 group-hover:text-[#1b6b3a] transition-colors">
+                    {isFr ? project.title : project.titleEn}
+                  </h3>
 
-                    <div className="flex items-center gap-4 text-xs text-fiad-gray-light mb-4">
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-3 h-3" />
-                        {project.location}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {project.year}
-                      </span>
-                    </div>
+                  {/* Problème */}
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    {isFr ? project.problem : project.problemEn}
+                  </p>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <div>
-                        <div className="text-xs text-fiad-gray-light">{isFr ? "Bénéficiaires" : "Beneficiaries"}</div>
-                        <div className="font-display font-bold text-fiad-green">{project.beneficiaries}</div>
+                  {/* Localisation */}
+                  <div className="flex items-center gap-1 text-xs text-gray-500 mb-4">
+                    <MapPin className="w-3 h-3 flex-shrink-0" />
+                    {project.location}
+                  </div>
+
+                  {/* Stats */}
+                  <div className="grid grid-cols-2 gap-3 mb-5">
+                    <div className="bg-[#f8f5f0] rounded-lg p-3 text-center">
+                      <div className="flex items-center justify-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-[#1b6b3a]" />
                       </div>
-                      <a href={`/${locale}/projets/${project.slug}`}
-                        className="inline-flex items-center gap-1 text-sm text-fiad-green font-medium hover:gap-2 transition-all">
-                        {isFr ? "Détails" : "Details"} <ArrowRight className="w-4 h-4" />
-                      </a>
+                      <div className="font-bold text-[#1b6b3a] text-sm">{project.beneficiaries.toLocaleString("fr-FR")}</div>
+                      <div className="text-xs text-gray-500">{isFr ? "Bénéficiaires" : "Beneficiaries"}</div>
+                    </div>
+                    <div className="bg-[#f8f5f0] rounded-lg p-3 text-center">
+                      <div className="flex items-center justify-center gap-1 mb-1">
+                        <Briefcase className="w-3 h-3 text-[#c9973a]" />
+                      </div>
+                      <div className="font-bold text-[#c9973a] text-sm">{project.budget}</div>
+                      <div className="text-xs text-gray-500">{isFr ? "Budget" : "Budget"}</div>
                     </div>
                   </div>
-                </article>
-              );
-            })}
+
+                  {/* CTA */}
+                  <Link
+                    href={`/${locale}/projets/${project.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#1b6b3a] hover:gap-3 transition-all group-hover:text-[#1b6b3a]"
+                  >
+                    {isFr ? "En savoir plus" : "Learn more"}
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
+
+          {filtered.length === 0 && (
+            <div className="text-center py-16 text-gray-500">
+              {isFr ? "Aucun projet pour ce filtre." : "No projects for this filter."}
+            </div>
+          )}
         </div>
       </section>
     </div>
