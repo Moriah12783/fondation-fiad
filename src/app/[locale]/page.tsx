@@ -1,9 +1,12 @@
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import HeroSection from "@/components/sections/HeroSection";
+import ConvictionSection from "@/components/sections/ConvictionSection";
 import StatsSection from "@/components/sections/StatsSection";
+import ActionsSection from "@/components/sections/ActionsSection";
 import MissionSection from "@/components/sections/MissionSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import StorySection from "@/components/sections/StorySection";
 import CtaSection from "@/components/sections/CtaSection";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -37,11 +40,13 @@ export default async function HomePage({ params }: Props) {
           title: tHero("title"),
           titleAccent: tHero("titleAccent"),
           description: tHero("description"),
+          description2: tHero("description2"),
           ctaPrimary: tHero("ctaPrimary"),
           ctaSecondary: tHero("ctaSecondary"),
           scrollDown: tHero("scrollDown"),
         }}
       />
+      <ConvictionSection locale={locale} />
       <StatsSection
         locale={locale}
         messages={{
@@ -53,6 +58,7 @@ export default async function HomePage({ params }: Props) {
           partners: tStats("partners"),
         }}
       />
+      <ActionsSection locale={locale} />
       <MissionSection
         locale={locale}
         messages={{
@@ -73,10 +79,12 @@ export default async function HomePage({ params }: Props) {
           learnMore: tProjects("learnMore"),
         }}
       />
+      <StorySection locale={locale} />
       <CtaSection
         locale={locale}
         messages={{
           title: tCta("title"),
+          titleAccent: tCta("titleAccent"),
           description: tCta("description"),
           primary: tCta("primary"),
           secondary: tCta("secondary"),

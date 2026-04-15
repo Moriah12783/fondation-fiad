@@ -27,12 +27,12 @@
     "scrollDown": "Découvrir"
   },
   "stats": {
-    "title": "Notre impact en chiffres",
-    "subtitle": "Des résultats concrets, mesurables et durables à travers le continent africain",
+    "title": "L'impact en action",
+    "subtitle": "Chaque chiffre représente une vie impactée, une opportunité créée, un avenir redessiné.",
     "beneficiaries": "Bénéficiaires",
-    "countries": "Pays africains",
-    "projects": "Projets actifs",
-    "partners": "Partenaires"
+    "countries": "Zones d'intervention",
+    "projects": "Projets déployés",
+    "partners": "Partenaires engagés"
   },
   "mission": {
     "tag": "Notre raison d'être",
@@ -62,10 +62,11 @@
     "becomePartner": "Devenir partenaire"
   },
   "cta": {
-    "title": "Rejoignez le mouvement pour l'Afrique",
-    "description": "Ensemble, nous pouvons accélérer la transformation du continent. Partenaires, bailleurs, volontaires : votre engagement compte.",
-    "primary": "S'impliquer",
-    "secondary": "Nous contacter"
+    "title": "Le changement ne se construit pas seul.",
+    "titleAccent": "Il se construit ensemble.",
+    "description": "",
+    "primary": "Devenir partenaire",
+    "secondary": "Soutenir nos actions"
   },
   "footer": {
     "description": "La Fondation Impact Afrique Durable est une organisation à but non lucratif dédiée au développement durable et à l'innovation sociale en Afrique.",

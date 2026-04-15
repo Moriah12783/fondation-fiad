@@ -5,6 +5,7 @@ interface CtaSectionProps {
   locale: string;
   messages: {
     title: string;
+    titleAccent?: string;
     description: string;
     primary: string;
     secondary: string;
@@ -21,22 +22,29 @@ export default function CtaSection({ locale, messages }: CtaSectionProps) {
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-fiad-gold/10 rounded-full blur-2xl" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="font-display font-bold text-4xl sm:text-5xl text-white mb-6">
+        <h2 className="font-display font-bold text-4xl sm:text-5xl text-white mb-2 leading-tight">
           {messages.title}
         </h2>
-        <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-          {messages.description}
-        </p>
+        {messages.titleAccent && (
+          <p className="font-display font-bold text-4xl sm:text-5xl text-fiad-gold mb-10 leading-tight">
+            {messages.titleAccent}
+          </p>
+        )}
+        {messages.description && (
+          <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
+            {messages.description}
+          </p>
+        )}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href={localePath("/impliquer")}
+            href={localePath("/partenaires")}
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-fiad-gold hover:bg-fiad-gold-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:shadow-fiad-gold/25"
           >
             {messages.primary}
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
-            href={localePath("/contact")}
+            href={localePath("/impliquer")}
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/20 transition-all"
           >
             <Mail className="w-4 h-4" />
