@@ -49,7 +49,7 @@ export default function Navbar({ locale }: NavbarProps) {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href={localePath("/")} className="flex items-center gap-2">
-            <div className="w-12 h-12 overflow-hidden flex-shrink-0 rounded-full">
+            <div className="w-16 h-16 overflow-hidden flex-shrink-0 rounded-full">
               <Image
                 src="/logo.png"
                 alt="FIAD Logo"
