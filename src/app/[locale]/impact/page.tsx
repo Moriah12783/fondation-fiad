@@ -53,8 +53,52 @@ export default async function ImpactPage({ params }: Props) {
         </div>
       </section>
 
+      {/* Manifeste impact */}
+      <section className="py-20 bg-white border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Notre engagement */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1b6b3a]/10 text-[#1b6b3a] text-sm font-medium mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#1b6b3a]" />
+                {isFr ? "Notre engagement" : "Our commitment"}
+              </div>
+              <p className="text-[#6b7280] text-xl leading-relaxed mb-3">
+                {isFr
+                  ? "Nous ne mesurons pas le succès en intentions."
+                  : "We don't measure success in intentions."}
+              </p>
+              <p className="text-3xl sm:text-4xl font-bold text-[#0f2a4a] leading-tight">
+                {isFr
+                  ? "Nous le mesurons en résultats."
+                  : "We measure it in results."}
+              </p>
+            </div>
+
+            {/* Notre approche */}
+            <div className="bg-[#0f2a4a] rounded-3xl p-8 text-white text-center">
+              <p className="text-white/70 text-lg leading-relaxed mb-4">
+                {isFr
+                  ? "Chaque action est suivie, évaluée, améliorée."
+                  : "Every action is tracked, evaluated, improved."}
+              </p>
+              <p className="text-xl font-bold text-white mb-2">
+                {isFr
+                  ? "Parce que l'impact n'est pas un concept."
+                  : "Because impact is not a concept."}
+              </p>
+              <p className="text-2xl font-bold text-[#c9973a]">
+                {isFr ? "C'est une responsabilité." : "It's a responsibility."}
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* KPIs principaux */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-[#f8f5f0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -109,7 +153,7 @@ export default async function ImpactPage({ params }: Props) {
       </section>
 
       {/* Répartition thématique */}
-      <section className="py-20 bg-[#f8f5f0]">
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-[#1b6b3a] font-semibold text-sm uppercase tracking-wider">
