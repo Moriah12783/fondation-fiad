@@ -84,28 +84,43 @@
   "foundation": {
     "title": "La Fondation",
     "subtitle": "Notre vision, notre mission, nos valeurs",
+    "who": {
+      "tag": "Qui sommes-nous",
+      "intro": "La Fondation Impact Afrique Durable (FIAD) est née d'une conviction simple mais profonde :",
+      "conviction": "L'Afrique peut et doit être actrice de son propre développement.",
+      "identity": "Nous ne sommes pas seulement une organisation.",
+      "identityAccent": "Nous sommes une dynamique de transformation."
+    },
     "vision": {
       "title": "Notre Vision",
-      "content": "Un continent africain où chaque individu, quelle que soit son origine, dispose des ressources, des opportunités et du cadre nécessaires pour contribuer pleinement à un développement durable et équitable."
+      "content": "Nous imaginons une Afrique où chaque jeune, chaque femme, chaque communauté a les moyens de créer, d'innover et de prospérer durablement."
     },
     "mission": {
       "title": "Notre Mission",
-      "content": "Concevoir, financer et déployer des programmes à fort impact dans les domaines de l'éducation, de l'entrepreneuriat, du développement durable et de l'innovation sociale, en partenariat avec les communautés locales, les institutions et le secteur privé."
+      "content": "Transformer des idées en solutions concrètes, et des solutions en impacts durables."
     },
     "values": {
       "title": "Nos Valeurs",
-      "integrity": "Intégrité",
-      "integrityDesc": "Transparence et honnêteté dans toutes nos actions",
-      "excellence": "Excellence",
-      "excellenceDesc": "Exigence de qualité dans chaque programme",
+      "engagement": "Engagement",
+      "engagementDesc": "Agir avec responsabilité, chaque jour, pour ceux que nous servons.",
+      "innovation": "Innovation",
+      "innovationDesc": "Penser autrement pour agir efficacement face aux défis africains.",
+      "transparency": "Transparence",
+      "transparencyDesc": "Rendre compte avec honnêteté — des succès comme des difficultés.",
       "impact": "Impact",
-      "impactDesc": "Mesure rigoureuse de nos résultats",
-      "inclusion": "Inclusion",
-      "inclusionDesc": "Aucune communauté laissée de côté",
-      "sovereignty": "Souveraineté",
-      "sovereigntyDesc": "Solutions africaines pour l'Afrique",
-      "partnership": "Partenariat",
-      "partnershipDesc": "Collaboration avec toutes les parties prenantes"
+      "impactDesc": "Mesurer ce qui compte vraiment. Pas les intentions, les résultats.",
+      "solidarity": "Solidarité",
+      "solidarityDesc": "Avancer ensemble. Personne ne progresse seul."
+    },
+    "governance": {
+      "title": "Gouvernance",
+      "intro": "Derrière FIAD, il y a des femmes et des hommes engagés.",
+      "desc": "Une équipe qui travaille avec rigueur, responsabilité et vision."
+    },
+    "approach": {
+      "title": "Notre Approche",
+      "intro": "Nous travaillons avec les communautés, pas à leur place.",
+      "pillars": ["L'écoute", "La co-construction", "L'impact mesurable"]
     }
   },
   "contact": {
