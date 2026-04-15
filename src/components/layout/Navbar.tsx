@@ -51,7 +51,7 @@ export default function Navbar({ locale }: NavbarProps) {
           <Link href={localePath("/")} className="flex items-center gap-2">
             <div className="w-12 h-12 overflow-hidden flex-shrink-0 rounded-full">
               <Image
-                src="/logo-fiad.png1.png"
+                src="/logo.png"
                 alt="FIAD Logo"
                 width={120}
                 height={120}
