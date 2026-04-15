@@ -75,8 +75,35 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {/* Story immersive */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <p className="text-2xl sm:text-3xl font-bold text-[#0f2a4a] leading-tight mb-6">
+            {isFr ? project.storyHook : project.storyHookEn}
+          </p>
+          <p className="text-[#6b7280] text-lg mb-6">
+            {isFr ? "Nous leur donnons :" : "We give them:"}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            {(isFr ? project.storyGives : project.storyGivesEn).map((item: string, i: number) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-white text-sm"
+                style={{ backgroundColor: accentColor }}
+              >
+                <span className="text-white/60">0{i + 1}</span>
+                {item}
+              </div>
+            ))}
+          </div>
+          <p className="text-xl font-bold" style={{ color: accentColor }}>
+            👉 {isFr ? project.storyClosing : project.storyClosingEn}
+          </p>
+        </div>
+      </section>
+
       {/* KPIs */}
-      <section className="py-12 bg-white border-b border-gray-100">
+      <section className="py-12 bg-[#f8f5f0] border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {project.kpis.map((kpi, i) => {
