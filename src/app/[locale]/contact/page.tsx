@@ -17,15 +17,27 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <div className="pt-24">
-      <section className="bg-gradient-to-br from-fiad-navy to-fiad-navy-light py-20 px-4">
+      <section className="bg-gradient-to-br from-[#0f2a4a] to-[#1a4070] py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-display font-bold text-4xl sm:text-5xl text-white mb-4">
-            {isFr ? "Contactez-nous" : "Contact us"}
-          </h1>
-          <p className="text-white/70 text-xl">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9973a]/20 text-[#c9973a] text-sm font-medium mb-8">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#c9973a]" />
+            {isFr ? "Écrivez-nous" : "Write to us"}
+          </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6">
+            <span className="font-bold text-5xl sm:text-6xl lg:text-7xl text-white leading-none">
+              {isFr ? "Parlons." : "Talk."}
+            </span>
+            <span className="font-bold text-5xl sm:text-6xl lg:text-7xl text-[#c9973a] leading-none">
+              {isFr ? "Construisons." : "Build."}
+            </span>
+            <span className="font-bold text-5xl sm:text-6xl lg:text-7xl text-[#1b6b3a] leading-none">
+              {isFr ? "Agissons." : "Act."}
+            </span>
+          </div>
+          <p className="text-white/60 text-lg mt-4">
             {isFr
-              ? "Une question, un projet ? Notre équipe vous répond."
-              : "A question, a project? Our team will get back to you."}
+              ? "Une question, un projet, une idée ? Notre équipe vous répond."
+              : "A question, a project, an idea? Our team will get back to you."}
           </p>
         </div>
       </section>

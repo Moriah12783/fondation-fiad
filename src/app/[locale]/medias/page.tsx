@@ -25,11 +25,18 @@ export default async function MediasPage({ params }: Props) {
     <div className="pt-24">
       <section className="bg-gradient-to-br from-fiad-navy to-fiad-navy-light py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-display font-bold text-4xl sm:text-5xl text-white mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9973a]/20 text-[#c9973a] text-sm font-medium mb-6">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#c9973a]" />
+            {isFr ? "Sur le terrain" : "In the field"}
+          </div>
+          <h1 className="font-display font-bold text-4xl sm:text-5xl text-white mb-6">
             {isFr ? "Médias" : "Media"}
           </h1>
-          <p className="text-white/70 text-xl">
-            {isFr ? "La FIAD dans la presse et les actualités" : "FIAD in the press and news"}
+          <p className="text-xl text-white/80 font-medium mb-2">
+            {isFr ? "Images, histoires, actions." : "Images, stories, actions."}
+          </p>
+          <p className="text-lg text-white/60">
+            {isFr ? "Découvrez FIAD sur le terrain." : "Discover FIAD in the field."}
           </p>
         </div>
       </section>
