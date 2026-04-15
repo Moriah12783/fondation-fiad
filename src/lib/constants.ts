@@ -33,7 +33,7 @@ export const NAV_ITEMS = [
   { label: "Partenaires", labelEn: "Partners", href: "/partenaires" },
   { label: "Pour les Bailleurs", labelEn: "For Donors", href: "/bailleurs", badge: "Nouveau" },
   { label: "Transparence", labelEn: "Transparency", href: "/transparence" },
-  { label: "Contact", labelEn: "Contact", href: "/contact" },
+  { label: "S'impliquer", labelEn: "Get Involved", href: "/impliquer" },
 ];
 
 export const STRATEGIC_AXES = [
