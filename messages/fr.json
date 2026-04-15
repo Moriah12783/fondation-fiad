@@ -18,11 +18,12 @@
   },
   "hero": {
     "tagline": "Fondation Impact Afrique Durable",
-    "title": "Bâtir aujourd'hui",
-    "titleAccent": "l'Afrique de demain",
-    "description": "La FIAD est une fondation africaine engagée dans le développement durable, l'innovation sociale et l'inclusion économique. Nous agissons pour un continent fort, juste et prospère.",
-    "ctaPrimary": "Découvrir notre mission",
-    "ctaSecondary": "Nos projets",
+    "title": "Bâtir aujourd'hui l'Afrique que nous voulons",
+    "titleAccent": "léguer demain",
+    "description": "L'Afrique ne manque ni de talents, ni d'idées, ni de ressources. Elle manque parfois d'opportunités structurées, d'accompagnement et de passerelles vers un développement durable.",
+    "description2": "La Fondation Impact Afrique Durable agit pour combler cet écart — en transformant le potentiel en impact concret.",
+    "ctaPrimary": "Découvrir notre vision",
+    "ctaSecondary": "Collaborer avec nous",
     "scrollDown": "Découvrir"
   },
   "stats": {

@@ -12,6 +12,7 @@ interface HeroSectionProps {
     title: string;
     titleAccent: string;
     description: string;
+    description2?: string;
     ctaPrimary: string;
     ctaSecondary: string;
     scrollDown: string;
@@ -71,14 +72,21 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
           </h1>
 
           {/* Description */}
-          <p
+          <div
             className={cn(
-              "text-white/75 text-lg sm:text-xl leading-relaxed max-w-2xl mb-10 transition-all duration-700 delay-300",
+              "max-w-2xl mb-10 transition-all duration-700 delay-300 space-y-3",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}
           >
-            {messages.description}
-          </p>
+            <p className="text-white/75 text-lg sm:text-xl leading-relaxed">
+              {messages.description}
+            </p>
+            {messages.description2 && (
+              <p className="text-white/90 text-lg sm:text-xl leading-relaxed font-medium">
+                {messages.description2}
+              </p>
+            )}
+          </div>
 
           {/* CTA Buttons */}
           <div
