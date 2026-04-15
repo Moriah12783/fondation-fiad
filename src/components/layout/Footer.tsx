@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin, ArrowRight } from "lucide-react";
 import { FIAD_CONFIG, NAV_ITEMS } from "@/lib/constants";
 
@@ -49,8 +50,15 @@ export default function Footer({ locale }: FooterProps) {
           {/* Colonne 1 : À propos */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-fiad-green rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm font-display">F</span>
+              <div className="w-12 h-12 overflow-hidden flex-shrink-0 rounded-full">
+                <Image
+                  src="/logo-fiad.png1.png"
+                  alt="FIAD Logo"
+                  width={120}
+                  height={120}
+                  className="w-full object-cover"
+                  style={{ objectPosition: "center 10%", transform: "scale(1.3)", transformOrigin: "center 15%" }}
+                />
               </div>
               <div>
                 <div className="font-display font-bold text-white">FIAD</div>

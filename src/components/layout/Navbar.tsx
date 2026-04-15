@@ -49,14 +49,14 @@ export default function Navbar({ locale }: NavbarProps) {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href={localePath("/")} className="flex items-center gap-2">
-            <div className="w-10 h-10 overflow-hidden flex-shrink-0">
+            <div className="w-12 h-12 overflow-hidden flex-shrink-0 rounded-full">
               <Image
                 src="/logo-fiad.png1.png"
                 alt="FIAD Logo"
-                width={80}
-                height={80}
-                className="w-full object-cover object-top"
-                style={{ marginTop: "0px", transform: "scale(1.1)", transformOrigin: "top center" }}
+                width={120}
+                height={120}
+                className="w-full object-cover"
+                style={{ objectPosition: "center 10%", transform: "scale(1.3)", transformOrigin: "center 15%" }}
               />
             </div>
             <div>
