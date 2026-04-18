@@ -21,6 +21,7 @@
     "title": "Building tomorrow's",
     "titleAccent": "Africa today",
     "description": "FIAD is an African foundation committed to sustainable development, social innovation and economic inclusion. We act for a strong, just and prosperous continent.",
+    "description2": "Fondation Impact Afrique Durable acts to close that gap — transforming potential into concrete impact.",
     "ctaPrimary": "Discover our mission",
     "ctaSecondary": "Our projects",
     "scrollDown": "Discover"
@@ -62,10 +63,11 @@
     "becomePartner": "Become a partner"
   },
   "cta": {
-    "title": "Join the movement for Africa",
-    "description": "Together, we can accelerate the transformation of the continent. Partners, donors, volunteers: your commitment matters.",
-    "primary": "Get involved",
-    "secondary": "Contact us"
+    "title": "Change is not built alone.",
+    "titleAccent": "It is built together.",
+    "description": "Partners, donors, volunteers: your commitment makes the difference.",
+    "primary": "Become a partner",
+    "secondary": "Support our actions"
   },
   "footer": {
     "description": "The Fondation Impact Afrique Durable is a non-profit organization dedicated to sustainable development and social innovation in Africa.",

@@ -4,7 +4,10 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/ui/JsonLd";
 import type { Metadata } from "next";
+
+const BASE_URL = "https://fondation-fiad.org";
 
 type Props = {
   children: React.ReactNode;
@@ -21,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     description: t("description"),
     alternates: {
-      canonical: "/",
+      canonical: `${BASE_URL}/${locale}`,
       languages: {
-        fr: "/fr",
-        en: "/en",
+        fr: `${BASE_URL}/fr`,
+        en: `${BASE_URL}/en`,
       },
     },
   };
@@ -41,6 +44,9 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale}>
+      <head>
+        <JsonLd locale={locale} />
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <Navbar locale={locale} />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Download, CheckCircle, BarChart3, FileText, Eye } from "lucide-react";
+import { CheckCircle, BarChart3, FileText, Eye } from "lucide-react";
+import DownloadButton from "@/components/ui/DownloadButton";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -25,12 +26,12 @@ const ETHICS = [
 ];
 
 const DOCS = [
-  { title: "Rapport d'activité 2024", type: "PDF", size: "2,4 Mo", date: "Jan 2025" },
-  { title: "Rapport financier 2024", type: "PDF", size: "1,8 Mo", date: "Jan 2025" },
-  { title: "Statuts de la fondation", type: "PDF", size: "0,8 Mo", date: "Jan 2024" },
-  { title: "Politique de gouvernance", type: "PDF", size: "1,2 Mo", date: "Mar 2024" },
-  { title: "Méthodologie d'impact (M&E)", type: "PDF", size: "3,1 Mo", date: "Avr 2024" },
-  { title: "Charte éthique", type: "PDF", size: "0,5 Mo", date: "Jan 2024" },
+  { title: "Rapport d'activité 2024", type: "PDF", date: "Jan 2025", href: undefined },
+  { title: "Rapport financier 2024", type: "PDF", date: "Jan 2025", href: undefined },
+  { title: "Statuts de la fondation", type: "PDF", date: "2024", href: "/docs/statuts-fiad.pdf" },
+  { title: "Politique de gouvernance", type: "PDF", date: "Mar 2024", href: undefined },
+  { title: "Méthodologie d'impact (M&E)", type: "PDF", date: "Avr 2024", href: undefined },
+  { title: "Charte éthique", type: "PDF", date: "Jan 2024", href: undefined },
 ];
 
 export default function TransparencePage() {
@@ -172,10 +173,17 @@ export default function TransparencePage() {
       {/* Documents téléchargeables */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
+          <div className="text-center mb-4">
             <span className="text-[#1b6b3a] font-semibold text-sm uppercase tracking-wider">Accès libre</span>
             <h2 className="text-4xl font-bold text-[#0f2a4a] mt-2 mb-4">Documents officiels</h2>
-            <p className="text-gray-600">Téléchargez librement nos rapports, statuts et documents de gouvernance</p>
+            <p className="text-gray-600">Retrouvez nos rapports, statuts et documents de gouvernance</p>
+          </div>
+          {/* Note de transparence sur le statut des documents */}
+          <div className="max-w-3xl mx-auto mb-10 flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+            <span className="text-lg flex-shrink-0">📋</span>
+            <p>
+              <strong>Note :</strong> La FIAD est en cours d&apos;enregistrement officiel. Les rapports d&apos;activité et documents financiers seront publiés dès la première année d&apos;exercice officiel. Les documents marqués <span className="inline-flex items-center gap-1 font-medium"><span>🕐</span> disponibles prochainement</span> seront téléchargeables après l&apos;enregistrement.
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {DOCS.map((doc, i) => (
@@ -185,13 +193,11 @@ export default function TransparencePage() {
                     <FileText className="w-5 h-5 text-[#1b6b3a]" />
                   </div>
                   <div>
-                    <p className="font-medium text-[#0f2a4a] text-sm">{doc.title}</p>
-                    <p className="text-gray-400 text-xs">{doc.type} · {doc.size} · {doc.date}</p>
+                    <p className={`font-medium text-sm ${doc.href ? "text-[#0f2a4a]" : "text-gray-400"}`}>{doc.title}</p>
+                    <p className="text-gray-400 text-xs">{doc.type} · {doc.date}</p>
                   </div>
                 </div>
-                <button className="w-8 h-8 rounded-lg bg-[#f8f5f0] group-hover:bg-[#1b6b3a] flex items-center justify-center transition-colors">
-                  <Download className="w-4 h-4 text-gray-600 group-hover:text-white transition-colors" />
-                </button>
+                <DownloadButton href={doc.href} variant="icon" />
               </div>
             ))}
           </div>

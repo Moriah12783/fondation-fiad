@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock, Phone } from "lucide-react";
 import { FIAD_CONFIG } from "@/lib/constants";
+import ContactForm from "@/components/ui/ContactForm";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const isFr = locale === "fr";
   return {
-    title: locale === "fr" ? "Contact" : "Contact us",
+    title: isFr ? "Contact" : "Contact us",
+    description: isFr
+      ? "Contactez la Fondation Impact Afrique Durable — partenariat, financement, projet ou presse."
+      : "Contact the Fondation Impact Afrique Durable — partnership, funding, project inquiry or press.",
+    openGraph: {
+      title: isFr ? "Contact | FIAD" : "Contact us | FIAD",
+      description: isFr
+        ? "Parlons. Construisons. Agissons ensemble pour le développement de l'Afrique."
+        : "Talk. Build. Act together for Africa's development.",
+    },
   };
 }
 
@@ -15,8 +26,28 @@ export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   const isFr = locale === "fr";
 
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: isFr ? "Adresse" : "Address",
+      value: FIAD_CONFIG.location,
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      value: FIAD_CONFIG.email,
+      href: `mailto:${FIAD_CONFIG.email}`,
+    },
+    {
+      icon: Clock,
+      title: isFr ? "Horaires" : "Office hours",
+      value: isFr ? "Lun – Ven : 8h00 – 17h00 GMT" : "Mon – Fri: 8:00 AM – 5:00 PM GMT",
+    },
+  ];
+
   return (
     <div className="pt-24">
+      {/* Hero */}
       <section className="bg-gradient-to-br from-[#0f2a4a] to-[#1a4070] py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9973a]/20 text-[#c9973a] text-sm font-medium mb-8">
@@ -36,121 +67,56 @@ export default async function ContactPage({ params }: Props) {
           </div>
           <p className="text-white/60 text-lg mt-4">
             {isFr
-              ? "Une question, un projet, une idée ? Notre équipe vous répond."
-              : "A question, a project, an idea? Our team will get back to you."}
+              ? "Une question, un projet, une idée ? Notre équipe vous répond sous 48h."
+              : "A question, a project, an idea? Our team replies within 48 hours."}
           </p>
         </div>
       </section>
 
+      {/* Formulaire + coordonnées */}
       <section className="py-20 bg-fiad-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Infos contact */}
+            {/* Coordonnées */}
             <div className="space-y-6">
               <h2 className="font-display font-bold text-2xl text-fiad-navy mb-6">
                 {isFr ? "Nos coordonnées" : "Our contact details"}
               </h2>
 
-              {[
-                {
-                  icon: MapPin,
-                  title: isFr ? "Adresse" : "Address",
-                  value: FIAD_CONFIG.location,
-                },
-                {
-                  icon: Mail,
-                  title: "Email",
-                  value: FIAD_CONFIG.email,
-                },
-                {
-                  icon: Clock,
-                  title: isFr ? "Horaires" : "Office hours",
-                  value: isFr ? "Lun – Ven : 8h00 – 17h00 GMT" : "Mon – Fri: 8:00 AM – 5:00 PM GMT",
-                },
-              ].map(({ icon: Icon, title, value }) => (
+              {contactInfo.map(({ icon: Icon, title, value, href }) => (
                 <div key={title} className="flex gap-4 p-5 bg-white rounded-xl">
                   <div className="w-10 h-10 rounded-lg bg-fiad-green/10 flex items-center justify-center flex-shrink-0">
                     <Icon className="w-5 h-5 text-fiad-green" />
                   </div>
                   <div>
                     <div className="text-xs text-fiad-gray-light uppercase tracking-wide mb-1">{title}</div>
-                    <div className="text-fiad-navy font-medium text-sm">{value}</div>
+                    {href ? (
+                      <a href={href} className="text-fiad-navy font-medium text-sm hover:text-fiad-green transition-colors">
+                        {value}
+                      </a>
+                    ) : (
+                      <div className="text-fiad-navy font-medium text-sm">{value}</div>
+                    )}
                   </div>
                 </div>
               ))}
+
+              {/* Note engagement */}
+              <div className="p-5 bg-fiad-green/5 border border-fiad-green/20 rounded-xl">
+                <p className="text-sm text-fiad-gray leading-relaxed">
+                  {isFr
+                    ? "Chaque message est lu personnellement. Nous nous engageons à vous répondre dans un délai de 48 heures ouvrées."
+                    : "Every message is personally read. We commit to responding within 48 business hours."}
+                </p>
+              </div>
             </div>
 
-            {/* Formulaire */}
+            {/* Formulaire fonctionnel */}
             <div className="lg:col-span-2 bg-white rounded-2xl p-8 shadow-sm">
               <h2 className="font-display font-bold text-2xl text-fiad-navy mb-6">
                 {isFr ? "Envoyer un message" : "Send a message"}
               </h2>
-              <form className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-fiad-gray mb-2">
-                      {isFr ? "Nom complet *" : "Full name *"}
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-fiad-green focus:ring-2 focus:ring-fiad-green/10 transition-all text-sm"
-                      placeholder={isFr ? "Votre nom" : "Your name"}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-fiad-gray mb-2">
-                      {isFr ? "Email *" : "Email *"}
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-fiad-green focus:ring-2 focus:ring-fiad-green/10 transition-all text-sm"
-                      placeholder="email@exemple.com"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-fiad-gray mb-2">
-                    {isFr ? "Organisation" : "Organization"}
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-fiad-green focus:ring-2 focus:ring-fiad-green/10 transition-all text-sm"
-                    placeholder={isFr ? "Votre organisation (optionnel)" : "Your organization (optional)"}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-fiad-gray mb-2">
-                    {isFr ? "Sujet *" : "Subject *"}
-                  </label>
-                  <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-fiad-green focus:ring-2 focus:ring-fiad-green/10 transition-all text-sm text-fiad-gray">
-                    <option value="">{isFr ? "Choisir un sujet" : "Choose a subject"}</option>
-                    <option>{isFr ? "Partenariat" : "Partnership"}</option>
-                    <option>{isFr ? "Financement / Don" : "Funding / Donation"}</option>
-                    <option>{isFr ? "Demande de projet" : "Project inquiry"}</option>
-                    <option>{isFr ? "Presse / Médias" : "Press / Media"}</option>
-                    <option>{isFr ? "Autre" : "Other"}</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-fiad-gray mb-2">
-                    {isFr ? "Message *" : "Message *"}
-                  </label>
-                  <textarea
-                    rows={5}
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-fiad-green focus:ring-2 focus:ring-fiad-green/10 transition-all text-sm resize-none"
-                    placeholder={isFr ? "Décrivez votre demande..." : "Describe your request..."}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-fiad-green hover:bg-fiad-green-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:shadow-fiad-green/25"
-                >
-                  {isFr ? "Envoyer le message" : "Send message"}
-                </button>
-              </form>
+              <ContactForm locale={locale} />
             </div>
           </div>
         </div>

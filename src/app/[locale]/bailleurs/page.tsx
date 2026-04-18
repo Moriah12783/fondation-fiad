@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { ArrowRight, Download, Shield, BarChart3, FileText, Award } from "lucide-react";
+import { ArrowRight, Shield, BarChart3, FileText, Award } from "lucide-react";
 import Link from "next/link";
+import DownloadButton from "@/components/ui/DownloadButton";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -84,9 +85,11 @@ export default function BailleursPage() {
             <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[#c9973a] text-white rounded-lg font-semibold hover:bg-[#a07820] transition-colors">
               Devenir partenaire <ArrowRight className="w-5 h-5" />
             </Link>
-            <a href="#" className="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-colors">
-              <Download className="w-5 h-5" /> Dossier institutionnel
-            </a>
+            <DownloadButton
+              href="/docs/FIAD_OnePager_Donor.pdf"
+              label="Dossier institutionnel"
+              variant="full"
+            />
           </div>
         </div>
       </section>

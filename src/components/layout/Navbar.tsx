@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/lib/constants";
+import { useRouter } from "@/i18n/navigation";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   locale: string;
@@ -25,14 +26,43 @@ export default function Navbar({ locale }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // pathname inclut le préfixe locale ex: /fr/fondation/histoire
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const toggleLanguage = () => {
     const newLocale = locale === "fr" ? "en" : "fr";
-    const segments = pathname.split("/");
-    segments[1] = newLocale;
-    router.push(segments.join("/"));
+    // Retirer le préfixe locale pour obtenir le chemin interne (/fondation/histoire)
+    const internalPath = pathname.replace(`/${locale}`, "") || "/";
+    // router.push de next-intl gère la traduction des pathnames localisés
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    router.push(internalPath as any, { locale: newLocale });
   };
+
+  // Fermer le menu mobile + débloquer le scroll
+  const closeMobileMenu = () => {
+    setIsMobileOpen(false);
+    document.body.style.overflow = "";
+  };
+
+  const openMobileMenu = () => {
+    setIsMobileOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const toggleMobileMenu = () => {
+    if (isMobileOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  };
+
+  // Nettoyer le scroll lock si le composant est démonté
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   const localePath = (href: string) => `/${locale}${href}`;
 
@@ -131,6 +161,7 @@ export default function Navbar({ locale }: NavbarProps) {
             {/* Switcher langue */}
             <button
               onClick={toggleLanguage}
+              aria-label={locale === "fr" ? "Switch to English" : "Passer en français"}
               className={cn(
                 "flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                 isScrolled || !isHome
@@ -152,7 +183,9 @@ export default function Navbar({ locale }: NavbarProps) {
 
             {/* Burger mobile */}
             <button
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
+              onClick={toggleMobileMenu}
+              aria-label={isMobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={isMobileOpen}
               className={cn(
                 "lg:hidden p-2 rounded-lg transition-colors",
                 isScrolled || !isHome
@@ -174,7 +207,7 @@ export default function Navbar({ locale }: NavbarProps) {
               <div key={item.href}>
                 <Link
                   href={localePath(item.href)}
-                  onClick={() => setIsMobileOpen(false)}
+                  onClick={closeMobileMenu}
                   className="block px-4 py-3 text-sm font-medium text-fiad-gray hover:bg-fiad-cream hover:text-fiad-green rounded-lg transition-colors"
                 >
                   {locale === "fr" ? item.label : item.labelEn}
@@ -185,7 +218,7 @@ export default function Navbar({ locale }: NavbarProps) {
                       <Link
                         key={child.href}
                         href={localePath(child.href)}
-                        onClick={() => setIsMobileOpen(false)}
+                        onClick={closeMobileMenu}
                         className="block px-4 py-2 text-sm text-fiad-gray-light hover:text-fiad-green transition-colors"
                       >
                         {locale === "fr" ? child.label : child.labelEn}
@@ -197,14 +230,17 @@ export default function Navbar({ locale }: NavbarProps) {
             ))}
             <div className="pt-4 border-t border-gray-100 flex gap-2">
               <button
-                onClick={toggleLanguage}
+                onClick={() => {
+                  closeMobileMenu();
+                  toggleLanguage();
+                }}
                 className="flex-1 py-2 text-center text-sm font-medium text-fiad-gray border border-gray-200 rounded-lg hover:bg-fiad-cream transition-colors"
               >
                 {locale === "fr" ? "English" : "Français"}
               </button>
               <Link
                 href={localePath("/contact")}
-                onClick={() => setIsMobileOpen(false)}
+                onClick={closeMobileMenu}
                 className="flex-1 py-2 text-center text-sm font-semibold text-white bg-fiad-green rounded-lg hover:bg-fiad-green-dark transition-colors"
               >
                 Contact
