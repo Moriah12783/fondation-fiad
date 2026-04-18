@@ -40,15 +40,15 @@ export default async function ImpactPage({ params }: Props) {
       <section className="bg-[#0f2a4a] py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block px-4 py-2 rounded-full bg-[#c9973a]/20 text-[#c9973a] text-sm font-medium mb-6 border border-[#c9973a]/30">
-            {isFr ? "Données vérifiables" : "Verifiable data"}
+            {isFr ? "Cadre d'impact & Objectifs 2030" : "Impact framework & 2030 Targets"}
           </span>
           <h1 className="font-bold text-4xl sm:text-5xl text-white mb-4">
             {isFr ? "Notre Impact" : "Our Impact"}
           </h1>
           <p className="text-white/70 text-xl max-w-2xl mx-auto">
             {isFr
-              ? "Des données transparentes pour mesurer notre contribution au développement durable de l'Afrique"
-              : "Transparent data to measure our contribution to Africa's sustainable development"}
+              ? "Notre cadre de mesure, nos engagements et les objectifs que nous nous fixons pour transformer durablement l'Afrique"
+              : "Our measurement framework, commitments and targets we set to sustainably transform Africa"}
           </p>
         </div>
       </section>
@@ -66,13 +66,13 @@ export default async function ImpactPage({ params }: Props) {
               </div>
               <p className="text-[#6b7280] text-xl leading-relaxed mb-3">
                 {isFr
-                  ? "Nous ne mesurons pas le succès en intentions."
-                  : "We don't measure success in intentions."}
+                  ? "Dès notre premier projet, nous ne mesurerons pas le succès en intentions."
+                  : "From our very first project, we will not measure success in intentions."}
               </p>
               <p className="text-3xl sm:text-4xl font-bold text-[#0f2a4a] leading-tight">
                 {isFr
-                  ? "Nous le mesurons en résultats."
-                  : "We measure it in results."}
+                  ? "Nous le mesurerons en résultats concrets."
+                  : "We will measure it in concrete results."}
               </p>
             </div>
 
@@ -80,8 +80,8 @@ export default async function ImpactPage({ params }: Props) {
             <div className="bg-[#0f2a4a] rounded-3xl p-8 text-white text-center">
               <p className="text-white/70 text-lg leading-relaxed mb-4">
                 {isFr
-                  ? "Chaque action est suivie, évaluée, améliorée."
-                  : "Every action is tracked, evaluated, improved."}
+                  ? "Chaque action sera suivie, évaluée, améliorée."
+                  : "Every action will be tracked, evaluated, improved."}
               </p>
               <p className="text-xl font-bold text-white mb-2">
                 {isFr
@@ -100,34 +100,39 @@ export default async function ImpactPage({ params }: Props) {
       {/* KPIs principaux */}
       <section className="py-16 bg-[#f8f5f0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#c9973a]/10 text-[#c9973a] text-xs font-semibold tracking-wide uppercase border border-[#c9973a]/30">
+              {isFr ? "Objectifs cibles 2030" : "2030 Target goals"}
+            </span>
+          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Users,
-                value: "10 000+",
-                label: isFr ? "Bénéficiaires directs" : "Direct beneficiaries",
-                sub: isFr ? "et 35 000 indirects" : "and 35,000 indirect",
+                value: "500 000+",
+                label: isFr ? "Bénéficiaires visés" : "Target beneficiaries",
+                sub: isFr ? "directs et indirects" : "direct and indirect",
                 color: "green",
               },
               {
                 icon: Briefcase,
-                value: "15",
-                label: isFr ? "Projets déployés" : "Projects deployed",
-                sub: isFr ? "dans 5 pays" : "across 5 countries",
+                value: "100",
+                label: isFr ? "Projets planifiés" : "Planned projects",
+                sub: isFr ? "sur 4 axes thématiques" : "across 4 thematic axes",
                 color: "gold",
               },
               {
                 icon: Globe,
-                value: "5",
-                label: isFr ? "Zones d'intervention" : "Intervention zones",
-                sub: isFr ? "Afrique de l'Ouest" : "West Africa",
+                value: "15",
+                label: isFr ? "Pays africains" : "African countries",
+                sub: isFr ? "présence continentale" : "continental presence",
                 color: "navy",
               },
               {
                 icon: Heart,
-                value: "20+",
-                label: isFr ? "Partenaires engagés" : "Engaged partners",
-                sub: isFr ? "dont 8 internationaux" : "8 international",
+                value: "50+",
+                label: isFr ? "Partenaires visés" : "Target partners",
+                sub: isFr ? "institutions & privés" : "institutions & private",
                 color: "green",
               },
             ].map((k, i) => (

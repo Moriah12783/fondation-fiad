@@ -91,6 +91,9 @@ export default function StatsSection({ locale, messages }: StatsSectionProps) {
     <section ref={sectionRef} className="py-24 bg-fiad-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-fiad-gold/10 text-fiad-gold text-xs font-semibold tracking-wide uppercase mb-4 border border-fiad-gold/30">
+            Vision 2030
+          </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-fiad-navy mb-4">
             {messages.title}
           </h2>

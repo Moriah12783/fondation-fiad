@@ -88,10 +88,10 @@ export const STRATEGIC_AXES = [
 ];
 
 export const IMPACT_STATS = [
-  { value: 10000, suffix: "+", label: "Bénéficiaires", labelEn: "Beneficiaries" },
-  { value: 15, suffix: "", label: "Projets déployés", labelEn: "Projects deployed" },
-  { value: 5, suffix: "", label: "Zones d'intervention", labelEn: "Intervention zones" },
-  { value: 20, suffix: "+", label: "Partenaires engagés", labelEn: "Engaged partners" },
+  { value: 500000, suffix: "+", label: "Bénéficiaires visés", labelEn: "Target beneficiaries" },
+  { value: 100, suffix: "", label: "Projets planifiés", labelEn: "Planned projects" },
+  { value: 15, suffix: "", label: "Pays africains", labelEn: "African countries" },
+  { value: 50, suffix: "+", label: "Partenaires visés", labelEn: "Target partners" },
 ];
 
 export const PROJECTS_DATA = [
